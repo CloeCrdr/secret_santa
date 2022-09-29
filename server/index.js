@@ -1,19 +1,21 @@
-const mysql = require("mysql")
+const express = require("express");
+const connectionBdd = require("./config/db");
+const bodyParser = require("body-parser")
 const app = express()
-const express = require("express")
+const cors = require("cors")
+const userRoutes = require("./routes/userRoutes")
+const groupRoutes = require("./routes/groupRoutes")
 
-export const connectionBdd = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "root",
-    database: "secret_santa",
-    port: 3306
-});
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(cors())
+app.use(express.json())
 
-app.get("/", (rep, res) => {
-    res.send("hello")
+connectionBdd.connect((err) => {
+    if(err) return err
+    app.use("/user", userRoutes)
+    app.use("/group", groupRoutes)
 })
 
 app.listen(3001, () => {
-    console.log("Running on port 3001")
+    console.log("http://localhost:3001/")
 })

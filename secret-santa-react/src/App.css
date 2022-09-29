@@ -1,3 +1,6 @@
+/*** GENERAL SETTINGS ***/
+@import url('https://fonts.googleapis.com/css2?family=Lexend&family=Open+Sans&family=Roboto&display=swap');
+
 body {
   /*background-color: #282c34;*/
   background-color: #7E69CB;
@@ -5,6 +8,11 @@ body {
   background-repeat: no-repeat;
   background-position: center top;
   background-attachment: scroll;
+  font-family: 'Lexend', sans-serif;
+}
+
+body a {
+  text-decoration: none;
 }
 
 .App {
@@ -32,28 +40,207 @@ body {
   color: #b7cad4;
 }
 
-.navbar a, .navLog a {
-  color: #b7cad4;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 1rem;
-  font-family : monospace;
-  font-weight: bolder;
+.App-header ~ div {
+  background-color: #0f0f0f5b;
+  border-radius: 20px;
+  width: 60%;
+  min-height: 50vh;   
+  max-height: 70vh;
+  overflow: auto;
   padding: 10px;
-  margin: 5px;
-  border-radius: 10px;
-  transition: all ease-in 0.4s;
-}
-.navLog a:last-child{
-  background-color: /*#A52547*/ #554996;
-}
-.navbar a:hover, .navLog a:hover {
-  background-color: #ECA23A;
-  color: white;
-}
-
-div h1 {
-  color: #a8d5efc4;
+  margin: auto;
   margin-top: 5%;
 }
 
+.navbar a, .navLog a {
+  color: #b7cad4;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-family : 'Roboto', sans-serif;
+  margin: 10px;
+  transition: all ease-in 0.4s;
+}
+.navbar a:hover, .navLog a:hover {
+  border-bottom: 5px solid #ECA23A;
+  color: white;
+}
+.navLog a.active, .navbar a.active{
+  background-color: #554996;
+  color: white;
+  padding: 10px 20px 10px 20px;
+  border-radius: 10px;
+}
+.navLog a.active:hover, .navbar a.active:hover {
+  border-bottom: 0px ;
+}
+
+div h1 {
+  color: rgb(255, 255, 255);
+  margin-top: 5%;
+  box-shadow : inset 0 -3px #61519A;
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.094);
+  display: inline-block;
+}
+
+/*** FORMS SETTINGS ***/
+div form {
+  width: 50%;
+  margin: auto;
+}
+
+div form input.formInput {
+  padding: 5px 10px 5px 10px;
+  display: block;
+  border: 0px;
+  outline: 0px;
+  border-radius: 10px;
+  margin: auto;
+  background-color: #7c6ab4;
+}
+
+div form label {
+  color: white;
+  text-shadow: 0px 0px 2px #7c6ab4;
+  margin-top: 5px;
+  display: block;
+}
+
+input.formSubmit {
+  margin-top: 3%;
+  padding: 10px 25px 10px 25px;
+  background-color: #eca23ad2;
+  color: white;
+  border-radius: 10px;
+  border: 0px;
+  outline: 0px;
+  font-family: 'Lexend', sans-serif;
+}
+
+.addSecretSanta, .editProfile {
+  text-align: right;
+  width: 95%;
+  margin-bottom: 2%;
+}
+
+.addSecretSanta a, .editProfile a {
+  box-shadow: inset 0 -3px#A52547;
+  padding: 0px 0px 2px 0px;
+  color: white;
+  text-shadow: 0px 0px 2px #A52547;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+/*** CARDS GROUPS / SECRET SANTA SETTING ***/
+.contentHome {
+  margin: auto;
+}
+.cardsGroupHome {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+
+}
+.cardHome {
+  margin: 2px;
+  width: 95%;
+  max-height: 48vh;
+  overflow: auto;
+}
+.cardHome > div{
+  background-color: rgba(255, 255, 255, 0.833);
+  border-radius: 10px;
+  max-width: 90%;
+  margin: auto;
+  padding: 5px 15px 5px 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items:center;
+  justify-content: space-between;
+}
+
+.cardHome .name {
+  text-align: center;
+}
+
+.cardHome .name strong {
+  font-size: 1.2rem;
+  color: #57358D;
+  font-weight: bolder;
+  display: block;
+  text-align: center;
+}
+
+.cardHome .name span {
+  font-size: 0.8rem;
+}
+
+.cardHome .name span em {
+  color: #ECA23A;
+  font-style:normal!important;
+}
+
+.cardHome .places {
+  font-size: 0.9rem;
+}
+
+.cardHome .groupe {
+  display: block;
+  background-color: #554996;
+  padding: 10px 20px 10px 20px;
+  border-radius: 10px;
+  color: white;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+/*** PROFILE VIEWS ***/
+.flexProfile{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto;
+}
+.flexProfile .profile {
+  width: 40%;
+}
+.flexProfile .groups span {
+  display: block;
+  margin: 10px;
+  color: #eca23ad2;
+}
+
+.flexProfile .groups span a {
+  background-color:rgba(255, 255, 255, 0.573);
+  color: #554996;
+  padding: 0px 10px 0px 10px;
+  border-radius: 10px;
+}
+
+.userInfos {
+  text-align: center;
+  color: #dbdbdb;
+  margin: auto;
+  margin-top: 2%;
+}
+
+.userName {
+  font-size: 1.2rem;
+  margin: 2px;
+}
+
+.userName span {
+  font-size: 1.5rem;
+  color: #eca23ad2;
+  display: block;
+}
+
+.userEmail {
+  font-size: 1rem;
+  text-transform: lowercase;
+  margin: 4px;
+}
