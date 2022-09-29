@@ -2,7 +2,7 @@
 /server/node_modules
 /secret-santa-react/node_modules
 
-.DS_STORE
+.DS_Store
 scripts/flow/*/.flowconfig
 .flowconfig
 *~
