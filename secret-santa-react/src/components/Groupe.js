@@ -1,37 +1,54 @@
 import React, { Component } from 'react';
 
+
 class Groupe extends React.Component{
+
+    groupeId;
+    groupeName;
 
     constructor(props){
         super(props);
         this.state = {
-            user: [],
+            users: [],
             DataisLoaded: false
         }
     }
 
     componentDidMount (){
-        fetch('http://localhost:3001/group/1')
+
+        this.groupeId = window.location.href.split("/").pop();
+
+        fetch(`http://localhost:3001/group/${this.groupeId}`)
         .then((res) => res.json())
         .then((json) => {
             this.setState({
-              user: json,
-              DataisLoaded: true
+              users: json,
+              DataisLoaded: true,
             });
+            this.groupeName = this.state.users[0]?.groupe
         })
-        console.log(this.state.user)
     }
 
     render() {
+        const users = this.state.users.map((user) => 
+            <div key={user.id}>
+                <div className='user'>
+                    <strong>{user.prenom + ' ' + user.nom}</strong>
+                    <span>{user.email}</span>
+                </div> 
+            </div>
+        );
+
         return (
-            <div>        
-                <div>
-                    <h1>Groupe 1</h1>
-                    <ul>
-                        <li>
-                            {this.state.user[0] ? this.state.user[0].prenom : null} {this.state.user[0] ? this.state.user[0].nom : null}
-                        </li>
-                    </ul>
+            <div>
+                <h1>{this.groupeName}</h1>
+                <div className="contentHome">
+                    <div className='leaveGroup'>
+                        <a href="/home">Quitter le groupe</a>
+                    </div>
+                    <div className='cardGroup'>
+                    {users}
+                    </div>
                 </div>
             </div>
         )

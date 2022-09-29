@@ -1,6 +1,38 @@
 import React,{Component} from 'react';
 
-const Profile= () => {
+class Profile extends React.Component {
+    constructor(props) {
+        super(props);
+      
+        this.state = {
+            users: [],
+            groupes: [],
+            DataisLoaded: false
+        };
+      }
+
+      componentDidMount (){
+        fetch('http://localhost:3001/user')
+        .then((res) => res.json())
+        .then((json) => {
+            this.setState({
+              users: json,
+              DataisLoaded: true
+            });
+        })   
+
+        fetch('http://localhost:3001/group')
+        .then((res) => res.json())
+        .then((json) => {
+            this.setState({
+              groupes: json,
+              DataisLoaded: true
+            });
+            console.log(this.state.groupes)
+        }) 
+      } 
+
+      render() {
     return (
         <div>
             <h1>My profile</h1>
@@ -11,26 +43,29 @@ const Profile= () => {
                 <div className='flexProfile'>
                     <div className='groups'>
                         <span>
-                            Groupe 1 - <a href="">voir</a>
+                            Groupe 1 - <a href="">Voir</a>
                         </span>
                         <span>
-                            Groupe 2 - <a href="">voir</a>
+                            Groupe 2 - <a href="">Voir</a>
                         </span>
                         <span>
-                            Groupe 3 - <a href="">voir</a>
+                            Groupe 3 - <a href="">Voir</a>
                         </span>
                     </div>
                     <div className='profile'>
                         <div className='userInfos'>
-                            <div class="userName">
-                                <span>Nom</span> Prénom
+                            <img src="https://icones.pro/wp-content/uploads/2022/05/icones-de-noel-pere-noel-roxo.png"/>
+                            <div className="infos">
+                                <div className="userName">
+                                    <span>Nom</span> Prénom
+                                </div>
+                                <div className="userEmail">Email</div>
                             </div>
-                            <div class="userEmail">Email</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    )
+    )}
 }
 export default Profile;
