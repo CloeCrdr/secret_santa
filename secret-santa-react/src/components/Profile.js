@@ -23,7 +23,6 @@ class Profile extends React.Component {
                 user: json,
                 DataisLoaded: true
             });
-            console.log(this.state.user)
         })
 
         fetch(`http://localhost:3001/group/profile/1`)
@@ -32,11 +31,19 @@ class Profile extends React.Component {
             this.setState({
                 groupes: json,
             });
-            console.log(this.state.groupes)
         }) 
     } 
 
     render() {
+        const groupes = this.state.groupes.map((groupe) =>
+        
+            <div key={groupe.id}>
+                <span>
+                    {groupe.nom} <a href={`/groupe/${groupe.id}`}>Voir</a>
+                </span>
+            </div>
+        );
+
         return (
             <div>
                 <h1>My profile</h1>
@@ -46,24 +53,16 @@ class Profile extends React.Component {
                     </div>
                     <div className='flexProfile'>
                         <div className='groups'>
-                            <span>
-                                Groupe 1 - <a href="/groupe">Voir</a>
-                            </span>
-                            <span>
-                                Groupe 2 - <a href="">Voir</a>
-                            </span>
-                            <span>
-                                Groupe 3 - <a href="">Voir</a>
-                            </span>
+                           {groupes}
                         </div>
                         <div className='profile'>
                             <div className='userInfos'>
                                 <img src="https://icones.pro/wp-content/uploads/2022/05/icones-de-noel-pere-noel-roxo.png"/>
                                 <div className="infos">
                                     <div className="userName">
-                                        <span>Nom</span> Prénom
+                                        <span>{this.state.user[0]?.nom}</span> {this.state.user[0]?.prenom}
                                     </div>
-                                    <div className="userEmail">Email</div>
+                                    <div className="userEmail">{this.state.user[0]?.email}</div>
                                 </div>
                             </div>
                         </div>

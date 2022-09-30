@@ -239,7 +239,6 @@ input.formSubmit {
 }
 .flexProfile .profile {
   text-align:center;
-  width: 30%;
 }
 .flexProfile .groups {
   max-width: 55%;
@@ -267,12 +266,9 @@ input.formSubmit {
   background-color: rgba(255, 255, 255, 0.752);
   padding: 10px;
   border-radius: 10px;
+  white-space: nowrap;
   overflow: hidden;
 } 
-
-.userInfos .infos {
-  text-align: left!important;
-}
 
 .userInfos img {
   width: 50px;
@@ -285,19 +281,23 @@ input.formSubmit {
   font-size: 1.2rem;
   margin: 2px;
   color: #6858BA;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .userName span {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #eca23ad2;
-  display: block;
-  text-transform: uppercase;
 }
 
 .userEmail {
   font-size: 1rem;
   text-transform: lowercase;
-
+  overflow: hidden;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 

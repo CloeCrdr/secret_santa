@@ -23,8 +23,7 @@ class App extends React.Component {
   }
 
   handleCallback = (childData) =>{
-    this.connectUser = childData;
-    console.log(this.connectUser);
+    this.connectUser = childData
   }
     
   render () {
@@ -70,7 +69,7 @@ class App extends React.Component {
             <Route path="/groupe/:id" element={<Groupe/>} />
             <Route path="/creategroup" element={<CreateGroup/>} />
             <Route path="/editprofile" element={<EditProfile/>} />
-            <Route path="/" element={<Index/>} />
+            <Route path="/" element={<Index connectUser={this.connectUser}/>} />
           </Routes>
         </div>
       </BrowserRouter>

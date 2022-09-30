@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 class Login extends React.Component{
 
     connectUser;
-    // navigate = useNavigate();
 
     constructor(props) {
         super(props);
@@ -37,10 +35,11 @@ class Login extends React.Component{
             this.state.users.forEach((user) => {
                 if(user.email === event.target.email.value && user.password === event.target.password.value){
                     this.connectUser = user
-                    useNavigate('/')
+                    this.props.parentCallback(this.connectUser);
+                    document.location.href = 'http://localhost:3000/'
                 }
             })
-            this.props.parentCallback(this.connectUser);
+            
             console.log(this.connectUser)
         }
     
