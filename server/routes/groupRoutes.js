@@ -22,6 +22,17 @@ router.get("/:group_id", (req, res) => {
     })
 })
 
+router.get("/profile/:user_id", (req, res) => {
+    return new Promise (() => {
+        connectionBdd.query("SELECT * FROM groupe g LEFT JOIN groupe_user gu ON gu.groupe_id = g.id WHERE gu.user_id = ? GROUP BY gu.groupe_id",
+        [req.params.user_id], 
+        (err, resp) => {
+        if(err) throw err
+        res.send(resp)
+        })
+    })
+})
+
 router.post("/addNew", (req, res) => {
     return new Promise ((result, reject) => {
         connectionBdd.query("INSERT INTO groupe (nom, admin_id) VALUES (?, ?)",
