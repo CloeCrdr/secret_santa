@@ -114,6 +114,7 @@ input.formSubmit {
   border: 0px;
   outline: 0px;
   font-family: 'Lexend', sans-serif;
+  cursor: pointer;
 }
 
 .addSecretSanta, .editProfile, .leaveGroup {
@@ -297,4 +298,21 @@ input.formSubmit {
   font-size: 1rem;
   text-transform: lowercase;
 
+}
+
+
+/*** INDEX PAGE ***/
+
+.textDescription {
+  text-align: justify;
+  color: white;
+  padding: 0px 20px;
+}
+
+.textDescription em {
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #b7cad4;
+  font-style: normal!important;
 }
