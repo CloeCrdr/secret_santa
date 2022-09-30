@@ -1,62 +1,50 @@
 import React, { Component } from 'react';
+import Session from 'react-session-api';
+import {useNavigate} from 'react-router-dom';
 
-class Login extends React.Component{
+let users = []
+let connectUser;
 
-    connectUser;
+fetch('http://localhost:3001/user')
+.then((res) => res.json())
+.then((json) => {
+    users = json
+}); 
 
-    constructor(props) {
-        super(props);
-      
-        this.state = {
-            users: [],
-            DataisLoaded: false
-        };
-      }
 
-      componentDidMount (){
-        fetch('http://localhost:3001/user')
-        .then((res) => res.json())
-        .then((json) => {
-            this.setState({
-                users: json,
-                DataisLoaded: true
-            });
-            console.log(this.state.users);
-        }); 
+const Login = () => {
+    const navigate = useNavigate();
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(users);
+
+        console.log(event.target.email.value);
+        console.log(event.target.password.value);
+        users.forEach((user) => {
+            if(user.email === event.target.email.value && user.password === event.target.password.value){
+                connectUser = user
+                Session.set("connectUser", connectUser)
+                localStorage.setItem('test','je passe ')
+                sessionStorage.setItem('testSession','je passe ')
+                navigate('/')
+            }
+        })
+        console.log(connectUser)
     }
 
-    render(){
-        const handleSubmit = (event) => {
-            event.preventDefault();
-            console.log(this.state.users);
+    return (
+        <div>
+            <h1>Login</h1>
+            <form className='loginForm' onSubmit={handleSubmit}>
+                <label htmlFor="userName">Mail:</label>
+                <input type="email" name="email" className="formInput" required/>
 
-            console.log(event.target.email.value);
-            console.log(event.target.password.value);
-            this.state.users.forEach((user) => {
-                if(user.email === event.target.email.value && user.password === event.target.password.value){
-                    this.connectUser = user
-                    this.props.parentCallback(this.connectUser);
-                    document.location.href = 'http://localhost:3000/'
-                }
-            })
-            
-            console.log(this.connectUser)
-        }
-    
-        return (
-            <div>
-                <h1>Login</h1>
-                <form className='loginForm' onSubmit={handleSubmit}>
-                    <label htmlFor="userName">Mail:</label>
-                    <input type="email" name="email" className="formInput" required/>
-    
-                    <label htmlFor="password">Mot de passe:</label>
-                    <input type="password" name="password" className="formInput" required/>
-    
-                    <input type="submit" name="submit" value="Valider" className='formSubmit'/>
-                </form>
-            </div>
-        )
-    }
+                <label htmlFor="password">Mot de passe:</label>
+                <input type="password" name="password" className="formInput" required/>
+
+                <input type="submit" name="submit" value="Valider" className='formSubmit'/>
+            </form>
+        </div>
+    )
 }
 export default Login;

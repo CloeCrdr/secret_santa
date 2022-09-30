@@ -1,0 +1,44 @@
+[
+    {
+      "id": 1,
+      "nom": "Ragheb",
+      "prenom": "Randa",
+      "email": "randa.ragheb@livecampus.tech",
+      "password": "123456789"
+    },
+    {
+      "id": 2,
+      "nom": "Dubernet",
+      "prenom": "Mateo",
+      "email": "mateo.dubernet@livecampus.tech",
+      "password": "123456789"
+    },
+    {
+      "id": 3,
+      "nom": "Centaure",
+      "prenom": "Chris",
+      "email": "chris.centaure@livecampus.tech",
+      "password": "123456789"
+    },
+    {
+      "id": 4,
+      "nom": "Gaspar Cordeiro",
+      "prenom": "Cloé",
+      "email": "cloe.gaspar-cordeiro@livecampus.tech",
+      "password": "123456789"
+    },
+    {
+      "id": 5,
+      "nom": "test",
+      "prenom": "test&",
+      "email": "test@mail.fr",
+      "password": "test123"
+    },
+    {
+      "id": 6,
+      "nom": "Pierre",
+      "prenom": "Paul",
+      "email": "trst@mail.fr",
+      "password": "123"
+    }
+  ]

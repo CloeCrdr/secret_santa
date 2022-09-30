@@ -313,6 +313,26 @@ input.formSubmit {
   font-family: 'Roboto', sans-serif;
   text-transform: uppercase;
   font-weight: bold;
-  color: #b7cad4;
   font-style: normal!important;
+  background: -webkit-linear-gradient(45deg,#ECA23A, #7c6ab4);
+  border-radius: 20px;
+  padding: 2px 10px 2px 10px;
+}
+
+.textDescription p span {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  background: -webkit-linear-gradient(45deg,#57358D, #A52547);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.textDescription p u {
+  background: -webkit-linear-gradient(45deg,#ECA23A, #7c6ab4);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
 }

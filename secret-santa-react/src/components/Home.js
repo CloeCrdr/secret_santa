@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-
+import Session from 'react-session-api'
 
 
 class Home extends React.Component {
@@ -14,6 +14,7 @@ class Home extends React.Component {
       }
 
       componentDidMount (){
+
         fetch('http://localhost:3001/user')
         .then((res) => res.json())
         .then((json) => {
