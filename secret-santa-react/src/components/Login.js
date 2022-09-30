@@ -24,8 +24,8 @@ const Login = () => {
             if(user.email === event.target.email.value && user.password === event.target.password.value){
                 connectUser = user
                 Session.set("connectUser", connectUser)
-                localStorage.setItem('test','je passe ')
-                sessionStorage.setItem('testSession','je passe ')
+                // localStorage.setItem('test','je passe ')
+                // sessionStorage.setItem('testSession','je passe ')
                 navigate('/')
             }
         })

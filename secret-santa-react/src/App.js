@@ -34,18 +34,15 @@ class App extends React.Component {
 
   componentDidMount(){
     console.log('App.js mounted');
-    this.setState({connect: Session.get('connectUser')})
-    // this.state.connect = Session.get('connectUser');
-    // setInterval(() => {
-    //   if (Session.get('connectUser') !== this.state.connect) {
-    //     console.log('new', Session.get('connectUser'));
-    //     this.render();
-    //   }
-    // }, 1000);
+    setInterval(() => {
+      if (Session.get('connectUser') !== this.state.connect) {
+        this.setState({connect: Session.get('connectUser')});
+        this.render();
+      }
+    }, 1000);
   }
     
   render() {
-
     return (
       <BrowserRouter>
         <div className="App">
