@@ -16,7 +16,7 @@ const App = () => {
 
   const [connect, setConnect] = useState(false)
 
-  console.log(connect)
+  // console.log(connect)
   return (
     <BrowserRouter>
       <div className="App">

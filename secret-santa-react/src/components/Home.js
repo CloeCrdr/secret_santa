@@ -6,23 +6,24 @@ const Home = () => {
 
     const [users,setUsers] = useState([])
     const [groupes,setGroupes] = useState([])
-    // const [dataIsLoaded,setDataIsLoaded] = useState(false)
+    // let users = []
 
     useEffect(() => {
+        fetch('http://localhost:3001/group')
+        .then((res) => res.json())
+        .then((json) => {
+            setGroupes(json)
+            console.log(groupes)
+         });
+        
         fetch('http://localhost:3001/user')
-            .then((res) => res.json())
-            .then((json) => {
-                    setUsers(json)
-                    // setDataisLoaded(true)
-            })
-
-            fetch('http://localhost:3001/group')
-            .then((res) => res.json())
-            .then((json) => {
-                    setUsers(json)
-                    // setDataisLoaded(true)
-                });
-            }) 
+        .then((res) => res.json())
+        .then((json) => {
+            setUsers(json)
+                // setDataisLoaded(true)
+        }) 
+        
+    },[]) 
 
     return (
         <div>
@@ -31,10 +32,20 @@ const Home = () => {
                 <div className='addSecretSanta'>
                     <a href="/CreateGroup">Créer un groupe</a>
                 </div>
-
                 <div className='cardsGroupHome'>
                     <div className='cardHome'>
-                        {groupes}
+                    {groupes.map(groupe => <div key={groupe.id}>
+                        <div className='name'>
+                            <strong>{groupe.nom}</strong>
+                            <span>
+                                créé par <em>{groupe.admin} </em>
+                            </span>
+                        </div>
+                        <div>
+                            <div className='places'></div>
+                            <a href={`/groupe/${groupe.id}`} className='groupe'>Voir le groupe</a>
+                        </div>
+                    </div>)}
                     </div>
                     <div className='cardHome'>
                         <div>
