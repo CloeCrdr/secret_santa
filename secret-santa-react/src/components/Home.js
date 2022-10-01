@@ -6,27 +6,23 @@ const Home = () => {
 
     const [users,setUsers] = useState([])
     const [groupes,setGroupes] = useState([])
-    const [dataIsLoaded,setDataIsLoaded] = useState(false)
+    // const [dataIsLoaded,setDataIsLoaded] = useState(false)
 
     useEffect(() => {
         fetch('http://localhost:3001/user')
             .then((res) => res.json())
             .then((json) => {
-                this.setState({
-                    users: json,
-                    DataisLoaded: true
-                });
+                    setUsers(json)
+                    // setDataisLoaded(true)
             })
 
             fetch('http://localhost:3001/group')
             .then((res) => res.json())
             .then((json) => {
-                this.setState({
-                    groupes: json,
-                    DataisLoaded: true
+                    setUsers(json)
+                    // setDataisLoaded(true)
                 });
             }) 
-    })
 
     return (
         <div>
