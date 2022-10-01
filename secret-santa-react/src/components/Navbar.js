@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {  NavLink, } from 'react-router-dom';
 
 const Navbar = ({connect,setConnect}) => {
@@ -7,6 +7,11 @@ const Navbar = ({connect,setConnect}) => {
         localStorage.removeItem('connectUser')
         setConnect(false)
     }
+    useEffect (() => {
+        if(localStorage.getItem('connectUser')){
+            setConnect(true)
+        }
+    })
 
     console.log(connect)
     return (
