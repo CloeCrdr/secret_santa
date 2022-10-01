@@ -3,15 +3,15 @@ import {useNavigate} from 'react-router-dom';
 
 const Register = () => {
 
-    let users = []
-    const navigate = useNavigate()
-
     fetch('http://localhost:3001/user')
     .then((res) => res.json())
     .then((json) => {
-       users = json
-       console.log(users)
+        users = json
+        // console.log(users)
     }) 
+
+    let users = []
+    const navigate = useNavigate()
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -47,8 +47,7 @@ const Register = () => {
         }else{
             alert('This user email already exist!');
         }
-    }
-    
+    } 
 
     return (
         <div>

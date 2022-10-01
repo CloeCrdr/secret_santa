@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Session from 'react-session-api'
 
 const Index = () => {
-    console.log(Session.get('connectUser'));
+    // console.log(Session.get('connectUser'));
     return (
         <div>
             <h1>Bienvenue sur l'application <br/>Secret Santa !</h1>

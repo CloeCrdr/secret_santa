@@ -1,35 +1,30 @@
-import React, { Component } from 'react';
-import Session from 'react-session-api';
-import {useNavigate} from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-let users = []
-let connectUser;
+const Login = ({connect,setConnect}) => {
 
-fetch('http://localhost:3001/user')
-.then((res) => res.json())
-.then((json) => {
-    users = json
-}); 
+    let users = []
+    const navigate = useNavigate()
 
+    fetch('http://localhost:3001/user')
+        .then((res) => res.json())
+        .then((json) => {
+            users = json
+        });
 
-const Login = () => {
-    const navigate = useNavigate();
+    const [errMsg, setErrMsg] = useState('')
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(users);
 
-        console.log(event.target.email.value);
-        console.log(event.target.password.value);
         users.forEach((user) => {
-            if(user.email === event.target.email.value && user.password === event.target.password.value){
-                connectUser = user
-                Session.set("connectUser", connectUser)
-                // localStorage.setItem('test','je passe ')
-                // sessionStorage.setItem('testSession','je passe ')
+            if (user.email === event.target.email.value && user.password === event.target.password.value) {
+                localStorage.setItem("connectUser", true)
+                setConnect(true)
                 navigate('/')
+            } else {
+                setErrMsg("Data or password are incorrect!")
             }
         })
-        console.log(connectUser)
     }
 
     return (
@@ -37,12 +32,13 @@ const Login = () => {
             <h1>Login</h1>
             <form className='loginForm' onSubmit={handleSubmit}>
                 <label htmlFor="userName">Mail:</label>
-                <input type="email" name="email" className="formInput" required/>
+                <input type="email" name="email" className="formInput" required />
 
                 <label htmlFor="password">Mot de passe:</label>
-                <input type="password" name="password" className="formInput" required/>
+                <p className='errorMsg'>{errMsg}</p>
+                <input type="password" name="password" className="formInput" required />
 
-                <input type="submit" name="submit" value="Valider" className='formSubmit'/>
+                <input type="submit" name="submit" value="Valider" className='formSubmit' />
             </form>
         </div>
     )
