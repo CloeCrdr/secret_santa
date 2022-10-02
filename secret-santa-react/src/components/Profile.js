@@ -19,7 +19,7 @@ const Profile = () => {
         .then((json) => {
             setGroupes(json)
         }) 
-    })
+    },[])
 
     const groupe =  groupes.map((groupe) =>
         

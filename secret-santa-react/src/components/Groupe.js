@@ -15,7 +15,7 @@ const Groupe = ()=> {
             setUsers(json)
             groupeName = user[0]?.groupe
         })
-    });
+    },[]);
 
     const user = users.map((user) => 
         <div key={user.id}>
