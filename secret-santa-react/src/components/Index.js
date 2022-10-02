@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Session from 'react-session-api'
+import React from 'react';
+
 
 const Index = () => {
     // console.log(Session.get('connectUser'));

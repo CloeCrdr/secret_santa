@@ -7,7 +7,7 @@ const Profile = () => {
     // const [dataIsLoaded,setDataIsLoaded] = useState(false)
 
     useEffect(() => {
-        let userId = window.location.href.split("/").pop();
+        // let userId = window.location.href.split("/").pop();
         fetch(`http://localhost:3001/user/1`)
         .then((res) => res.json())
         .then((json) => {

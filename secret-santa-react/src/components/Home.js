@@ -1,5 +1,5 @@
 import React, { useState, useEffect }  from 'react';
-import Session from 'react-session-api'
+
 
 
 const Home = () => {
@@ -19,11 +19,11 @@ const Home = () => {
         fetch('http://localhost:3001/user')
         .then((res) => res.json())
         .then((json) => {
-            setUsers(json)kout  
+            setUsers(json) 
                 // setDataisLoaded(true)
         }) 
         
-    },[]) 
+    },) 
 
     return (
         <div>
