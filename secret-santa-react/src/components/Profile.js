@@ -8,13 +8,13 @@ const Profile = () => {
 
     useEffect(() => {
         // let userId = window.location.href.split("/").pop();
-        fetch(`http://localhost:3001/user/1`)
+        fetch(`${process.env.REACT_APP_SERVER_URL || 'http://localhost:3001'}/user`)
         .then((res) => res.json())
         .then((json) => {
             setUsers(json)
         })
 
-        fetch(`http://localhost:3001/group/profile/1`)
+        fetch(`${process.env.REACT_APP_SERVER_URL || 'http://localhost:3001'}/profile/1`)
         .then((res) => res.json())
         .then((json) => {
             setGroupes(json)

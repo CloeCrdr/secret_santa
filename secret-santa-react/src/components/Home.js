@@ -9,14 +9,14 @@ const Home = () => {
     // let users = []
 
     useEffect(() => {
-        fetch('http://localhost:3001/group')
+        fetch(`${process.env.REACT_APP_SERVER_URL || 'http://localhost:3001'}/group`)
         .then((res) => res.json())
         .then((json) => {
             setGroupes(json)
             console.log(groupes)
          });
         
-        fetch('http://localhost:3001/user')
+         fetch(`${process.env.REACT_APP_SERVER_URL || 'http://localhost:3001'}/user`)
         .then((res) => res.json())
         .then((json) => {
             setUsers(json) 

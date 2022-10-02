@@ -9,7 +9,7 @@ const Groupe = ()=> {
 
     useEffect(() => {
         groupeId = window.location.href.split("/").pop();
-        fetch(`http://localhost:3001/group/${groupeId}`)
+        fetch(`${process.env.REACT_APP_SERVER_URL || 'http://localhost:3001'}/group/${groupeId}`)
         .then((res) => res.json())
         .then((json) => {
             setUsers(json)

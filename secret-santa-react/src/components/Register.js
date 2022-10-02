@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom';
 
 const Register = () => {
 
-    fetch('http://localhost:3001/user')
+    fetch(`${process.env.REACT_APP_SERVER_URL || 'http://localhost:3001'}/user`)
     .then((res) => res.json())
     .then((json) => {
         users = json
@@ -23,7 +23,7 @@ const Register = () => {
             }
         })
         if(count === 0){
-            fetch(`http://localhost:3001/user/addNew`,{
+            fetch(`${process.env.REACT_APP_SERVER_URL || 'http://localhost:3001'}/user/addNew`,{
                 method: 'POST',
                 headers: {
                   'Accept': 'application/json',

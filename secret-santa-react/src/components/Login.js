@@ -6,7 +6,7 @@ const Login = ({connect,setConnect}) => {
     let users = []
     const navigate = useNavigate()
 
-    fetch('http://localhost:3001/user')
+    fetch(`${process.env.REACT_APP_SERVER_URL || 'http://localhost:3001'}/user`)
         .then((res) => res.json())
         .then((json) => {
             users = json
