@@ -23,7 +23,7 @@ const Home = () => {
                 // setDataisLoaded(true)
         }) 
         
-    },) 
+    },[]) 
 
     return (
         <div>
