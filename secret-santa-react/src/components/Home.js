@@ -19,7 +19,7 @@ const Home = () => {
         fetch('http://localhost:3001/user')
         .then((res) => res.json())
         .then((json) => {
-            setUsers(json)
+            setUsers(json)kout  
                 // setDataisLoaded(true)
         }) 
         
