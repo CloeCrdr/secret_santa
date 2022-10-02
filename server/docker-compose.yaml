@@ -1,0 +1,33 @@
+version: '3.3'
+services:
+  node:
+    container_name: project_node
+    image: 'node:latest'
+    working_dir: /home/node/app
+    command:
+      - /bin/sh
+      - '-c'
+      - 'npm install && npm start'
+    ports:
+      - '3001:3001'
+    volumes:
+      - '.:/home/node/app'
+    networks:
+      - my-network
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_DATABASE: "secret_santa"
+      MYSQL_ROOT_PASSWORD: "root"
+    ports:
+      - "3306:3306"
+    volumes:
+      - './data/:/var/lib/mysql:rw'
+      - ./secret_santa.sql:/docker-entrypoint-initdb.d/dump.sql
+    user: mysql
+    networks:
+      - my-network
+networks:
+  my-network:
+    driver: bridge
